@@ -8,12 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        '8/5': '8 / 5',
+        '16/9': '16 / 9',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       spacing: {
+        '128': '32rem',
         '1/6': '16.6%',
         '1/8': '12.5%',
         '1/10': '10%',
