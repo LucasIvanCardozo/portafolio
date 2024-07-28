@@ -3,6 +3,7 @@ import './globals.css';
 import { roboto } from '../ui/fonts';
 import Image from 'next/image';
 import Proyect from '../components/Proyect';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Mi portafolio - Lucas Cardozo',
@@ -18,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <main className="bg-[url('/fondoMain.jpg')] bg-cover text-slate-950 min-h-screen flex flex-col items-center justify-center sm:flex-row">
-          <div className="w-4/5">
+        <main className="bg-[url('/fondoMain.jpg')] bg-cover text-slate-950 min-h-screen flex flex-col gap-10 items-center justify-center lg:flex-row">
+          <div className="w-4/5 max-w-128">
             <h1 className="font-bold text-3xl">
               <p>Hi, i`m web developer</p>
             </h1>
@@ -31,22 +32,18 @@ export default function RootLayout({
             </p>
             <ul className="font-bold">
               <li>
-                <a href="#projects">Projects</a>
-              </li>
-              <li>
-                <a href="#knowledge">Knowledge</a>
+                <Link href="#proyectos">Projects</Link>
               </li>
               <li>
                 <a href="">Studies</a>
               </li>
             </ul>
           </div>
-          <div className="relative w-7/10 h-min bg-[url('/meFondo.svg')] bg-contain aspect-[227/298] ml-1/6 mb-1/6">
+          <div className="relative w-7/10 max-w-96 bg-[url('/meFondo.svg')] bg-contain aspect-[227/298] ml-1/6 mb-1/6 sm:ml-1/14 sm:mb-1/14">
             <Image
               className="relative object-contain rounded-full z-10"
               src="/me.png"
-              height="894"
-              width="681"
+              fill={true}
               alt="Lucas Iván Cardozo."
               priority={true}
             />
@@ -106,7 +103,10 @@ export default function RootLayout({
             </ul>
           </div>
         </main>
-        <section className="relative min-h-screen flex flex-col bg-black overflow-x-clip">
+        <section
+          id="proyectos"
+          className="relative min-h-screen flex flex-col bg-black overflow-x-clip"
+        >
           <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
           <h2 className="relative z-10 text-center text-4xl m-10">PROJECTS</h2>
           <ul className="relative z-10 grid grid-cols-1 gap-y-6 m-auto place-items-center sm:grid-cols-2">

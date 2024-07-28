@@ -18,6 +18,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       spacing: {
+        '110': '27.5rem',
         '128': '32rem',
         '1/6': '16.6%',
         '1/8': '12.5%',
