@@ -9,15 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="h-screen text-black">
-        <button
-          onClick={handleClick}
-          type="button"
-          className="border-black border-2 m-44"
-        >
-          Send Mail
-        </button>
-      </section>
+      <section className="h-screen text-black"></section>
     </>
   );
 }

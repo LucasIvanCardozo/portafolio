@@ -1,7 +1,9 @@
 export default function HeladosItalia() {
   return (
     <>
-      <p>Bowling de paso</p>
+      <section className="bg-[url('/proyectsFondoBowling.svg')] text-slate-950 pt-10 pb-10">
+        <p>Bowling de paso</p>
+      </section>
     </>
   );
 }

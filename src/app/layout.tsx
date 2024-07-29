@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { roboto } from '../ui/fonts';
+import { lato, playfair_Display } from '../ui/fonts';
 import Image from 'next/image';
 import Proyect from '../components/Proyect';
 import Link from 'next/link';
@@ -18,26 +18,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <main className="bg-[url('/fondoMain.jpg')] bg-cover text-slate-950 min-h-screen flex flex-col gap-10 items-center justify-center lg:flex-row">
-          <div className="w-4/5 max-w-128">
-            <h1 className="font-bold text-3xl">
-              <p>Hi, i`m web developer</p>
+      <body className={lato.className}>
+        <main className="bg-[url('/fondoMain.jpg')] bg-cover text-slate-950 min-h-screen flex flex-col gap-10 items-center justify-center lg:flex-row pt-5 pb-5">
+          <div className="w-4/5 max-w-128 flex flex-col gap-3">
+            <h1 className={`font-bold text-3xl ${playfair_Display.className}`}>
+              <p>{`Hi, i'm web developer`}</p>
             </h1>
             <p>
               Future Computer Engineer passionate about technology, with the
               ability to transform ideas or problems into solutions. I love the
               idea of creating tools that optimize and simplify the work of
               future clients.
+              <Link className="font-bold" href="#proyectos">
+                Projects
+              </Link>
             </p>
-            <ul className="font-bold">
-              <li>
-                <Link href="#proyectos">Projects</Link>
-              </li>
-              <li>
-                <a href="">Studies</a>
-              </li>
-            </ul>
           </div>
           <div className="relative w-7/10 max-w-96 bg-[url('/meFondo.svg')] bg-contain aspect-[227/298] ml-1/6 mb-1/6 sm:ml-1/14 sm:mb-1/14">
             <Image
@@ -108,8 +103,12 @@ export default function RootLayout({
           className="relative min-h-screen flex flex-col bg-black overflow-x-clip"
         >
           <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
-          <h2 className="relative z-10 text-center text-4xl m-10">PROJECTS</h2>
-          <ul className="relative z-10 grid grid-cols-1 gap-y-6 m-auto place-items-center sm:grid-cols-2">
+          <h2
+            className={`relative z-10 text-center text-4xl m-10 ${playfair_Display.className}`}
+          >
+            PROJECTS
+          </h2>
+          <ul className="relative max-w-200 z-10 grid grid-cols-1 gap-y-6 m-auto place-items-center sm:grid-cols-2">
             <li className="w-51/60">
               <Proyect
                 title="Helados Italia"
