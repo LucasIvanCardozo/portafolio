@@ -1,27 +1,34 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { setTimeout } from 'timers/promises';
 
 export default function Proyect({
+  id,
   title,
   description,
-  link,
   img,
   programsUsed,
+  handleVisible,
 }: {
+  id: number;
   title: string;
   description: string;
-  link: string;
   img: string;
   programsUsed: string[];
+  handleVisible: (id: number) => void;
 }) {
   return (
     <article className="w-full max-w-128 flex flex-col items-center h-full justify-between sm:max-w-128">
       <h3 className="text-2xl">{title}</h3>
       <p className="text-center text-base">
         {description}
-        <Link className="block text-sm" href={link}>
+        <Link
+          className="block text-sm"
+          onClick={() => handleVisible(id)}
+          href="#proyectInfo"
+        >
           {'<-Más info->'}
         </Link>
       </p>
