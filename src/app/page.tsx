@@ -9,18 +9,22 @@ export default function Home() {
   const [visibleProyects, setvisibleProyects] = useState<[0 | 1, 0 | 1]>([
     0, 0,
   ]);
-  const [transformProyects, setTransformProyects] = useState<string>('');
+  const [transformProyects, setTransformProyects] = useState<{
+    height: string;
+    transform: string;
+  }>({ height: '0px', transform: '' });
 
   useEffect(() => {
     const hasOne = visibleProyects.indexOf(1);
     if (hasOne != -1) {
-      setTransformProyects(
-        `h-auto -translate-x-${
-          hasOne == 0 ? 0 : `${hasOne}/${visibleProyects.length}`
-        }`
-      );
+      setTransformProyects({
+        height: 'auto',
+        transform: `translateX(-${
+          hasOne == 0 ? 0 : `${(hasOne * 100) / visibleProyects.length}%`
+        })`,
+      });
     } else {
-      setTransformProyects('h-0');
+      setTransformProyects({ height: '0px', transform: '' });
     }
   }, [visibleProyects]);
 
@@ -127,7 +131,7 @@ export default function Home() {
       </main>
       <section
         id="proyectos"
-        className="relative flex flex-col bg-black p-10 gap-5"
+        className="relative flex flex-col bg-black p-10 gap-5 overflow-x-clip"
       >
         <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
         <h2
@@ -158,85 +162,88 @@ export default function Home() {
           </li>
         </ul>
       </section>
-      <section
-        id="proyectInfo"
-        className={`${transformProyects} w-max flex transform-gpu transition ease-in-out duration-500 overflow-clip`}
-      >
-        <article
-          className={`w-screen g-[url('/proyectsFondoItalia.svg')] text-slate-950 pt-10 pb-10`}
+      <section id="proyectInfo" className="w-screen overflow-hidden">
+        <div
+          className={
+            'w-max flex transform-gpu transition ease-in-out duration-500'
+          }
+          style={transformProyects}
         >
-          <div className="w-51/60 max-w-200 m-auto flex flex-col gap-8">
-            <h2
-              className={`text-center text-4xl ${playfair_Display.className}`}
-            >
-              Helados Italia
-            </h2>
-            <p className="w-11/12 max-w-128 ">
-              This project originated while I was working at Helados Italia,
-              where I saw an opportunity to develop an in-house service to
-              improve the ordering system, eliminating reliance on third-party
-              providers. Without prior knowledge of databases, I implemented a
-              solution using Google Sheets, enabling data modifications with
-              real-time updates on the webpage.
-            </p>
-            <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end drop-shadow-md">
-              <Image
-                className="object-cover"
-                src="/googleSheetsItalia.png"
-                fill={true}
-                alt="GoogleSheets de Helados Italia"
-              />
-            </div>
-            <p className="w-4/5 max-w-128 ">
-              To optimize and improve the speed of data retrieval, I developed a
-              script in Apps Script. This script generated a text with complete
-              information each time the database was edited, storing it in a
-              single cell. When rendering the webpage, only that cell was
-              loaded, which allowed for very fast data retrieval since the data
-              generation occurred when the database was updated and not every
-              time a fetch was performed.
-            </p>
-            <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end drop-shadow-md">
-              <Image
-                className="object-cover"
-                src="/appScriptItalia.png"
-                fill={true}
-                alt="GoogleSheets de Helados Italia"
-              />
-              <div className="absolute z-10 w-1/2 bottom-0 right-0 aspect-16/9 rounded-xl  overflow-hidden border-2 m-1/40 drop-shadow-md">
+          <article
+            className={`w-screen g-[url('/proyectsFondoItalia.svg')] text-slate-950 pt-10 pb-10 flex-none`}
+          >
+            <div className="w-51/60 max-w-200 m-auto flex flex-col gap-8">
+              <h2
+                className={`text-center text-4xl ${playfair_Display.className}`}
+              >
+                Helados Italia
+              </h2>
+              <p className="w-11/12 max-w-128 ">
+                This project originated while I was working at Helados Italia,
+                where I saw an opportunity to develop an in-house service to
+                improve the ordering system, eliminating reliance on third-party
+                providers. Without prior knowledge of databases, I implemented a
+                solution using Google Sheets, enabling data modifications with
+                real-time updates on the webpage.
+              </p>
+              <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end drop-shadow-md">
                 <Image
                   className="object-cover"
-                  src="/jsonItalia.png"
+                  src="/googleSheetsItalia.png"
+                  fill={true}
+                  alt="GoogleSheets de Helados Italia"
+                />
+              </div>
+              <p className="w-4/5 max-w-128 ">
+                To optimize and improve the speed of data retrieval, I developed
+                a script in Apps Script. This script generated a text with
+                complete information each time the database was edited, storing
+                it in a single cell. When rendering the webpage, only that cell
+                was loaded, which allowed for very fast data retrieval since the
+                data generation occurred when the database was updated and not
+                every time a fetch was performed.
+              </p>
+              <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end drop-shadow-md">
+                <Image
+                  className="object-cover"
+                  src="/appScriptItalia.png"
+                  fill={true}
+                  alt="GoogleSheets de Helados Italia"
+                />
+                <div className="absolute z-10 w-1/2 bottom-0 right-0 aspect-16/9 rounded-xl  overflow-hidden border-2 m-1/40 drop-shadow-md">
+                  <Image
+                    className="object-cover"
+                    src="/jsonItalia.png"
+                    fill={true}
+                    alt="GoogleSheets de Helados Italia"
+                  />
+                </div>
+              </div>
+              <p className="w-4/5 max-w-128 ">
+                This project originated while I was working at Helados Italia,
+                where I saw an opportunity to develop an in-house service to
+                improve the ordering system, eliminating reliance on third-party
+                providers. Without prior knowledge of databases, I implemented a
+                solution using Google Sheets, enabling data modifications with
+                real-time updates on the webpage.
+              </p>
+              <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end">
+                <Image
+                  className="object-cover"
+                  src="/googleSheetsItalia.png"
                   fill={true}
                   alt="GoogleSheets de Helados Italia"
                 />
               </div>
             </div>
-            <p className="w-4/5 max-w-128 ">
-              This project originated while I was working at Helados Italia,
-              where I saw an opportunity to develop an in-house service to
-              improve the ordering system, eliminating reliance on third-party
-              providers. Without prior knowledge of databases, I implemented a
-              solution using Google Sheets, enabling data modifications with
-              real-time updates on the webpage.
-            </p>
-            <div className="relative w-11/12 max-w-110 aspect-16/9 rounded-3xl overflow-hidden border-2 self-end">
-              <Image
-                className="object-cover"
-                src="/googleSheetsItalia.png"
-                fill={true}
-                alt="GoogleSheets de Helados Italia"
-              />
-            </div>
-          </div>
-        </article>
-        <article
-          className={`w-screen bg-[url('/proyectsFondoBowling.svg')] text-slate-950 pt-10 pb-10`}
-        >
-          <p>Bowling de paso</p>
-        </article>
+          </article>
+          <article
+            className={`w-screen bg-[url('/proyectsFondoBowling.svg')] text-slate-950 pt-10 pb-10 flex-none`}
+          >
+            <p>Bowling de paso</p>
+          </article>
+        </div>
       </section>
-
       <footer className="bg-neutral-900 flex flex-col items-center pt-2 text-xs">
         <div className="flex flex-col items-center">
           <p>© All rights reserved</p>

@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.className} overflow-x-clip`}>{children}</body>
+      <body className={`${lato.className}`}>{children}</body>
     </html>
   );
 }
