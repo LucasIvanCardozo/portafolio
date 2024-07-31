@@ -1,13 +1,16 @@
-import { Roboto, Playfair_Display, Lato } from 'next/font/google';
+import { Cabin, Merriweather, Montserrat } from 'next/font/google';
 
-export const roboto = Roboto({ subsets: ['latin'], weight: '400' });
-
-export const playfair_Display = Playfair_Display({
+export const cabin = Cabin({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '600', '700'], // Ajustes para diferentes pesos según necesidad
 });
 
-export const lato = Lato({
+export const merriweather = Merriweather({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '700'], // Usar para encabezados
+});
+
+export const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: '400', // Usar para subtítulos o botones
 });

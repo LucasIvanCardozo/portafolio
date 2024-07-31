@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { setTimeout } from 'timers/promises';
+import { montserrat } from '@/ui/fonts';
 
 export default function Proyect({
   id,
@@ -26,7 +26,7 @@ export default function Proyect({
         {description}
         <br />
         <Link
-          className="inline-block self-end text-sm text-indigo-600 hover:text-indigo-800 transition-colors mt-2"
+          className={`inline-block self-end text-sm bg-gray-600 text-gray-200 hover:bg-gray-700 hover:text-white transition-colors mt-2 px-4 py-2 rounded ${montserrat.className}`}
           onClick={() => handleVisible(id)}
           href="#proyectInfo"
         >

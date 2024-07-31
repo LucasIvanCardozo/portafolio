@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { lato } from '../ui/fonts';
+import { cabin } from '../ui/fonts';
 
 export const metadata: Metadata = {
   title: 'Mi portafolio - Lucas Cardozo',
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.className}`}>{children}</body>
+      <body className={`${cabin.className}`}>{children}</body>
     </html>
   );
 }

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Proyect from '../components/Proyect';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { playfair_Display } from '../ui/fonts';
+import { merriweather, cabin } from '@/ui/fonts';
 
 export default function Home() {
   const [visibleProyects, setvisibleProyects] = useState<[0 | 1, 0 | 1]>([
@@ -37,8 +37,6 @@ export default function Home() {
     setvisibleProyects(aux);
   };
 
-  const ulLoad = () => {};
-
   const handleClick = () => {
     fetch('/api/send', { method: 'POST' })
       .then(() => console.log('Hola hola'))
@@ -47,10 +45,10 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-[url('/fondoMain.jpg')] bg-cover text-slate-950 min-h-screen flex flex-col gap-10 items-center justify-center lg:flex-row py-5">
+      <main className="bg-[url('/fondoMain.png')] bg-center bg-cover text-slate-950 min-h-screen flex flex-col gap-10 items-center justify-center lg:flex-row py-5">
         {/* Contenedor de introducción */}
         <div className="w-4/5 max-w-3xl flex flex-col gap-4 text-center lg:text-left">
-          <h1 className={`font-bold text-4xl ${playfair_Display.className}`}>
+          <h1 className={`font-bold text-4xl ${merriweather.className}`}>
             {`Hi, I'm a Web Developer`}
           </h1>
           <p className="text-lg">
@@ -68,9 +66,9 @@ export default function Home() {
         </div>
 
         {/* Contenedor de imagen personal y redes sociales */}
-        <div className="relative w-7/10 max-w-96 bg-[url('/meFondo.svg')] bg-contain aspect-[227/298] mx-auto lg:mx-0">
+        <div className="relative w-7/10 max-w-96 bg-[url('/meFondo.svg')] bg-contain aspect-[227/298] mx-auto lg:mx-0 drop-shadow-xl">
           <Image
-            className="relative object-cover rounded-full shadow-lg z-10"
+            className="relative object-cover rounded-full z-10"
             src="/me.png"
             fill={true}
             alt="Lucas Iván Cardozo"
@@ -83,26 +81,30 @@ export default function Home() {
                 href: 'https://www.instagram.com/lucardozo27/',
                 src: '/logos/instagram.svg',
                 alt: 'Instagram',
+                styles: 'h-1/4',
               },
               {
                 href: 'https://www.linkedin.com/in/lucas-ivan-cardozo/',
                 src: '/logos/linkedin.svg',
                 alt: 'LinkedIn',
+                styles: 'left-2/3 top-1/10 h-1/4',
               },
               {
                 href: 'https://wa.me/2235319564',
                 src: '/logos/whatsapp.svg',
                 alt: 'WhatsApp',
+                styles: 'left-3/2 top-1/6 h-1/4',
               },
               {
                 href: 'https://github.com/LucasIvanCardozo',
                 src: '/logos/github.svg',
                 alt: 'GitHub',
+                styles: 'left-11/4 top-1/8 h-1/4',
               },
             ].map((social, index) => (
               <li
                 key={index}
-                className="drop-shadow-md relative hover:scale-110 transition-transform"
+                className={`relative hover:scale-110 transition-transform ${social.styles}`}
               >
                 <a
                   className="relative block h-full w-full"
@@ -120,16 +122,16 @@ export default function Home() {
 
       <section
         id="proyectos"
-        className="relative flex flex-col bg-black py-10 gap-5 overflow-x-clip"
+        className="relative flex flex-col bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 p-10 gap-5 overflow-x-clip text-white"
       >
         <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
         <h2
-          className={`relative z-10 text-center text-4xl text-white font-semibold mb-6 ${playfair_Display.className}`}
+          className={`relative z-10 text-center text-4xl ${merriweather.className}`}
         >
-          Projects
+          PROJECTS
         </h2>
-        <ul className="relative max-w-6xl z-10 grid grid-cols-1 gap-y-6 mx-auto sm:grid-cols-2">
-          <li>
+        <ul className="relative max-w-200 z-10 grid grid-cols-1 gap-y-6 m-auto place-items-stretch sm:grid-cols-2">
+          <li className="">
             <Proyect
               id={0}
               handleVisible={handleVisible}
@@ -137,9 +139,9 @@ export default function Home() {
               description="This was my first project and the one that got me involved in programming."
               img="/heladosItalia.png"
               programsUsed={['html', 'css', 'javascript']}
-            />
+            ></Proyect>
           </li>
-          <li>
+          <li className="">
             <Proyect
               id={1}
               handleVisible={handleVisible}
@@ -147,7 +149,7 @@ export default function Home() {
               description="A website with an SSR format, dedicated to what the clients wanted, and they were very satisfied."
               img="/bowlingDePaso.png"
               programsUsed={['react', 'gatsby', 'css', 'jsx']}
-            />
+            ></Proyect>
           </li>
         </ul>
       </section>
@@ -160,9 +162,7 @@ export default function Home() {
           {/* Información del Proyecto Helados Italia */}
           <article className="w-screen bg-[url('/proyectsFondoItalia.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none">
             <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
-              <h2
-                className={`text-center text-4xl ${playfair_Display.className}`}
-              >
+              <h2 className={`text-center text-4xl ${merriweather.className}`}>
                 Helados Italia
               </h2>
               <p className="text-lg leading-relaxed">
@@ -228,9 +228,7 @@ export default function Home() {
           {/* Información del Proyecto Bowling de Paso */}
           <article className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none">
             <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
-              <h2
-                className={`text-center text-4xl ${playfair_Display.className}`}
-              >
+              <h2 className={`text-center text-4xl ${merriweather.className}`}>
                 Bowling de Paso
               </h2>
               <p className="text-lg leading-relaxed">
