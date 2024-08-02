@@ -3,7 +3,7 @@ import { merriweather } from '@/ui/fonts';
 export default function AppRestaurant(visible: boolean) {
   return (
     <article
-      className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover max-w-128 text-slate-950 pt-10 pb-10 flex-none"
+      className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none"
       style={visible ? { height: 'auto' } : { height: '0' }}
     >
       <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
