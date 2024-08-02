@@ -146,7 +146,7 @@ export default function Home() {
             Showcasing some of my recent work and achievements.
           </p>
         </div>
-        <ul className="relative max-w-200 z-10 grid grid-cols-1 gap-y-6 m-auto place-items-stretch sm:grid-cols-2">
+        <ul className="relative max-w-3xl z-10 grid grid-cols-1 gap-y-6 m-auto place-items-stretch sm:grid-cols-2">
           {[
             {
               title: 'Helados Italia',
