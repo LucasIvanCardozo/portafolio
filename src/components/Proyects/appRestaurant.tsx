@@ -1,8 +1,11 @@
 import { merriweather } from '@/ui/fonts';
 
-export default function AppRestaurant() {
+export default function AppRestaurant(visible: boolean) {
   return (
-    <article className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none">
+    <article
+      className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none"
+      style={visible ? { height: 'auto' } : { height: '0' }}
+    >
       <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
         <h2 className={`text-center text-4xl ${merriweather.className}`}>
           Restaurant Management Application

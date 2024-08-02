@@ -52,19 +52,19 @@ export default function Home() {
         {/* Contenedor de introducción */}
         <div className="w-4/5 max-w-3xl flex flex-col gap-4 text-center lg:text-left">
           <h1 className={`font-bold text-4xl ${merriweather.className}`}>
-            {`Hi, I'm a Web Developer`}
+            {`Hi, I'm Lucas Cardozo`}
           </h1>
           <p className="text-lg">
             Future Computer Engineer passionate about technology, with the
             ability to transform ideas or problems into solutions. I love the
             idea of creating tools that optimize and simplify the work of future
             clients.
-            <Link
+            <a
               className="font-bold ml-1 text-indigo-600 hover:text-indigo-800 transition-colors"
               href="#proyectos"
             >
               View Projects
-            </Link>
+            </a>
           </p>
         </div>
 
@@ -125,9 +125,19 @@ export default function Home() {
 
       <section
         id="proyectos"
-        className="relative flex flex-col bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 p-10 gap-5 overflow-x-clip text-white"
+        className="relative flex flex-col bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 py-10 px-3 gap-5 overflow-x-clip text-white"
       >
-        <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
+        <div
+          className="absolute origin-center h-full w-3/2 -left-1/4 z-0 rotate-3 top-1"
+          style={{
+            background: `radial-gradient(circle, 
+                          rgba(140, 140, 140, 1) 10%, 
+                          rgba(125, 125, 125, 1) 30%,  
+                          rgba(110, 110, 110, 1) 60%,     
+                          rgba(100, 100, 100, 1) 90%     
+                        )`,
+          }}
+        ></div>
         <div className="relative z-10 text-center">
           <h2 className={`text-5xl font-extrabold ${merriweather.className}`}>
             Projects
@@ -181,7 +191,9 @@ export default function Home() {
         >
           {[HeladosItalia, BowlingDePaso, AppRestaurant].map(
             (article, index) => (
-              <li key={index}>{article(index)}</li>
+              <li key={index}>
+                {article(visibleProyects[index] ? true : false)}
+              </li>
             )
           )}
         </ul>
