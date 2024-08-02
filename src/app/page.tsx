@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import Proyect from '@/components/proyect';
+import Proyect from '@/components/Proyect';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { merriweather, cabin } from '@/ui/fonts';
