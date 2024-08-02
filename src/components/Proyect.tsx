@@ -20,9 +20,9 @@ export default function Proyect({
   handleVisible: (id: number) => void;
 }) {
   return (
-    <article className="w-51/60 mx-auto max-w-xl flex flex-col items-center h-full justify-between sm:max-w-xl">
-      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
-      <p className="text-base leading-relaxed flex flex-col">
+    <article className="w-51/60 mx-auto max-w-xl flex flex-col items-center h-full justify-between sm:max-w-xl bg-gray-800 border border-gray-600 shadow-lg rounded-lg p-4 transform transition-transform hover:scale-105">
+      <h3 className="text-2xl font-semibold mb-2 text-white">{title}</h3>
+      <p className="text-base leading-relaxed flex flex-col text-gray-200">
         {description}
         <br />
         <Link

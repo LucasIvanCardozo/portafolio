@@ -1,13 +1,16 @@
 'use client';
 import Image from 'next/image';
-import Proyect from '../components/Proyect';
+import Proyect from '@/components/proyect';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { merriweather, cabin } from '@/ui/fonts';
+import HeladosItalia from '@/components/Proyects/heladosItalia';
+import BowlingDePaso from '@/components/Proyects/bowlingDePaso';
+import AppRestaurant from '@/components/Proyects/appRestaurant';
 
 export default function Home() {
-  const [visibleProyects, setvisibleProyects] = useState<[0 | 1, 0 | 1]>([
-    0, 0,
+  const [visibleProyects, setvisibleProyects] = useState<Array<0 | 1>>([
+    0, 0, 0,
   ]);
   const [transformProyects, setTransformProyects] = useState<{
     height: string;
@@ -75,7 +78,7 @@ export default function Home() {
             priority={true}
           />
           {/* Lista de redes sociales */}
-          <ul className="absolute flex flex-col space-y-3 h-1/3 aspect-[1/4] top-7/10 -left-1/6">
+          <ul className="absolute flex flex-col space-y-3 h-1/3 aspect-[1/4] top-2/3 -left-1/8">
             {[
               {
                 href: 'https://www.instagram.com/lucardozo27/',
@@ -87,7 +90,7 @@ export default function Home() {
                 href: 'https://www.linkedin.com/in/lucas-ivan-cardozo/',
                 src: '/logos/linkedin.svg',
                 alt: 'LinkedIn',
-                styles: 'left-2/3 top-1/10 h-1/4',
+                styles: 'left-1/2 top-1/10 h-1/4',
               },
               {
                 href: 'https://wa.me/2235319564',
@@ -125,122 +128,63 @@ export default function Home() {
         className="relative flex flex-col bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 p-10 gap-5 overflow-x-clip text-white"
       >
         <div className="absolute origin-center h-full w-3/2 -left-1/4 bg-neutral-500 z-0 rotate-3 top-1"></div>
-        <h2
-          className={`relative z-10 text-center text-4xl ${merriweather.className}`}
-        >
-          PROJECTS
-        </h2>
+        <div className="relative z-10 text-center">
+          <h2 className={`text-5xl font-extrabold ${merriweather.className}`}>
+            Projects
+          </h2>
+          <p className="text-xl mt-2 text-gray-300">
+            Showcasing some of my recent work and achievements.
+          </p>
+        </div>
         <ul className="relative max-w-200 z-10 grid grid-cols-1 gap-y-6 m-auto place-items-stretch sm:grid-cols-2">
-          <li className="">
-            <Proyect
-              id={0}
-              handleVisible={handleVisible}
-              title="Helados Italia"
-              description="This was my first project and the one that got me involved in programming."
-              img="/heladosItalia.png"
-              programsUsed={['html', 'css', 'javascript']}
-            ></Proyect>
-          </li>
-          <li className="">
-            <Proyect
-              id={1}
-              handleVisible={handleVisible}
-              title="Bowling de Paso"
-              description="A website with an SSR format, dedicated to what the clients wanted, and they were very satisfied."
-              img="/bowlingDePaso.png"
-              programsUsed={['react', 'gatsby', 'css', 'jsx']}
-            ></Proyect>
-          </li>
+          {[
+            {
+              title: 'Helados Italia',
+              description:
+                'This was my first project and the one that got me involved in programming.',
+              img: '/heladosItalia.png',
+              programsUsed: ['html', 'css', 'javascript'],
+            },
+            {
+              title: 'Bowling de Paso',
+              description:
+                'A website with an SSR format, dedicated to what the clients wanted, and they were very satisfied.',
+              img: '/bowlingDePaso.png',
+              programsUsed: ['react', 'gatsby', 'css', 'jsx'],
+            },
+            {
+              title: 'App Restaurant',
+              description:
+                'Application for managing restaurant tables, which includes a customer database, tracking of revenue and many other features.',
+              img: '/appRestaurant.png',
+              programsUsed: ['c-sharp', 'sqlite', 'visualStudio'],
+            },
+          ].map((proyect, index) => (
+            <li key={index}>
+              <Proyect
+                id={index}
+                handleVisible={handleVisible}
+                title={proyect.title}
+                description={proyect.description}
+                img={proyect.img}
+                programsUsed={proyect.programsUsed}
+              ></Proyect>
+            </li>
+          ))}
         </ul>
       </section>
 
       <section id="proyectInfo" className="w-full overflow-hidden">
-        <div
-          className="w-max flex transform-gpu transition-transform ease-in-out duration-500"
+        <ul
+          className="w-max flex transform-gpu transition-transform ease-in-out duration-700"
           style={transformProyects}
         >
-          {/* Información del Proyecto Helados Italia */}
-          <article className="w-screen bg-[url('/proyectsFondoItalia.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none">
-            <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
-              <h2 className={`text-center text-4xl ${merriweather.className}`}>
-                Helados Italia
-              </h2>
-              <p className="text-lg leading-relaxed">
-                This project originated while I was working at Helados Italia,
-                where I saw an opportunity to develop an in-house service to
-                improve the ordering system, eliminating reliance on third-party
-                providers. Without prior knowledge of databases, I implemented a
-                solution using Google Sheets, enabling data modifications with
-                real-time updates on the webpage.
-              </p>
-              <div className="relative w-full max-w-2xl aspect-video rounded-3xl overflow-hidden border-2 shadow-lg mx-auto">
-                <Image
-                  className="object-cover"
-                  src="/googleSheetsItalia.png"
-                  fill={true}
-                  alt="Google Sheets de Helados Italia"
-                />
-              </div>
-              <p className="text-lg leading-relaxed">
-                To optimize and improve the speed of data retrieval, I developed
-                a script in Apps Script. This script generated a text with
-                complete information each time the database was edited, storing
-                it in a single cell. When rendering the webpage, only that cell
-                was loaded, which allowed for very fast data retrieval since the
-                data generation occurred when the database was updated and not
-                every time a fetch was performed.
-              </p>
-              <div className="relative w-full max-w-2xl aspect-video rounded-3xl overflow-hidden border-2 shadow-lg mx-auto">
-                <Image
-                  className="object-cover"
-                  src="/appScriptItalia.png"
-                  fill={true}
-                  alt="App Script de Helados Italia"
-                />
-                <div className="absolute z-10 w-1/2 bottom-0 right-0 aspect-video rounded-xl overflow-hidden border-2 m-1/40 shadow-md">
-                  <Image
-                    className="object-cover"
-                    src="/jsonItalia.png"
-                    fill={true}
-                    alt="JSON de Helados Italia"
-                  />
-                </div>
-              </div>
-              <p className="text-lg leading-relaxed">
-                This project originated while I was working at Helados Italia,
-                where I saw an opportunity to develop an in-house service to
-                improve the ordering system, eliminating reliance on third-party
-                providers. Without prior knowledge of databases, I implemented a
-                solution using Google Sheets, enabling data modifications with
-                real-time updates on the webpage.
-              </p>
-              <div className="relative w-full max-w-2xl aspect-video rounded-3xl overflow-hidden border-2 shadow-lg mx-auto">
-                <Image
-                  className="object-cover"
-                  src="/googleSheetsItalia.png"
-                  fill={true}
-                  alt="Google Sheets de Helados Italia"
-                />
-              </div>
-            </div>
-          </article>
-
-          {/* Información del Proyecto Bowling de Paso */}
-          <article className="w-screen bg-[url('/proyectsFondoBowling.svg')] bg-cover text-slate-950 pt-10 pb-10 flex-none">
-            <div className="w-51/60 max-w-6xl mx-auto flex flex-col gap-8">
-              <h2 className={`text-center text-4xl ${merriweather.className}`}>
-                Bowling de Paso
-              </h2>
-              <p className="text-lg leading-relaxed">
-                Bowling de Paso es un proyecto que desarrollé utilizando React y
-                Gatsby, basado en SSR, y que permitió a los clientes
-                personalizar su experiencia en línea de acuerdo con sus
-                necesidades específicas, logrando así una alta satisfacción.
-              </p>
-              {/* Aquí puedes agregar imágenes o descripciones adicionales si lo deseas */}
-            </div>
-          </article>
-        </div>
+          {[HeladosItalia, BowlingDePaso, AppRestaurant].map(
+            (article, index) => (
+              <li key={index}>{article(index)}</li>
+            )
+          )}
+        </ul>
       </section>
 
       <footer className="bg-neutral-900 flex flex-col items-center py-4 text-xs text-white">
