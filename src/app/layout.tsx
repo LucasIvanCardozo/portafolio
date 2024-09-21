@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${cabin.className}`}>{children}</body>
+      <body className={`${cabin.className} antialiased`}>{children}</body>
     </html>
   );
 }
