@@ -11,12 +11,10 @@ export default function BowlingDePaso(visible: boolean) {
           Bowling de Paso
         </h2>
         <p className="text-lg leading-relaxed">
-          Bowling de Paso es un proyecto que desarrollé utilizando React y
-          Gatsby, basado en SSR, y que permitió a los clientes personalizar su
-          experiencia en línea de acuerdo con sus necesidades específicas,
-          logrando así una alta satisfacción.
+          Bowling de Paso is a project I developed using React and Gatsby, based
+          on SSR, that allowed clients to customize their online experience
+          according to their specific needs, achieving high satisfaction.
         </p>
-        {/* Aquí puedes agregar imágenes o descripciones adicionales si lo deseas */}
       </div>
     </article>
   );
